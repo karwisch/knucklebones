@@ -145,6 +145,17 @@
     text-align: center;
     margin-top: -10px;
   }
+  .setup-set-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: -8px;
+    min-height: 18px;
+  }
 
   .setup-panel {
     background: var(--bg-panel);
@@ -289,6 +300,169 @@
     border-color: var(--led-green);
     color: var(--led-green);
     box-shadow: 0 0 8px rgba(0, 255, 65, 0.15);
+  }
+
+  /* Custom mode */
+  .custom-set-info {
+    margin-bottom: 16px;
+  }
+  .custom-input-row {
+    margin-bottom: 12px;
+  }
+  .custom-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .custom-text-input {
+    width: 100%;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-mid);
+    color: var(--text-mid);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    padding: 8px 12px;
+    outline: none;
+  }
+  .custom-text-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+  .custom-textarea {
+    width: 100%;
+    min-height: 60px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-mid);
+    color: var(--text-mid);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px;
+    outline: none;
+    resize: vertical;
+  }
+  .custom-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+  .custom-scene-builder {
+    margin-top: 16px;
+  }
+  .custom-builder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .custom-total-time {
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 14px;
+    color: var(--led-green);
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
+  }
+  .custom-add-scene {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .scene-duration-input {
+    background: var(--bg-inset);
+    border: 1px solid var(--border-mid);
+    color: var(--led-green);
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 24px;
+    text-align: center;
+    width: 88px;
+    padding: 6px 4px;
+    outline: none;
+    text-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
+  }
+  .scene-duration-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+  .scene-duration-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+  .add-scene-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--led-green);
+    color: var(--led-green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .add-scene-btn:hover {
+    background: rgba(0, 255, 65, 0.08);
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.15);
+  }
+  .custom-scenes-list {
+    max-height: 200px;
+    overflow-y: auto;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-dim);
+    padding: 8px;
+  }
+  .custom-scenes-list::-webkit-scrollbar { width: 4px; }
+  .custom-scenes-list::-webkit-scrollbar-track { background: var(--bg-inset); }
+  .custom-scenes-list::-webkit-scrollbar-thumb { background: var(--border-mid); }
+  .custom-scenes-list:empty::before {
+    content: 'No scenes added yet';
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    display: block;
+    text-align: center;
+    padding: 20px;
+  }
+  .custom-scene-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border-dim);
+    gap: 12px;
+  }
+  .custom-scene-item:last-child { border-bottom: none; }
+  .custom-scene-num {
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 24px;
+  }
+  .custom-scene-time {
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 14px;
+    color: var(--led-green);
+    flex: 1;
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
+  }
+  .remove-scene-btn {
+    background: transparent;
+    border: 1px solid var(--border-dim);
+    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .remove-scene-btn:hover {
+    border-color: #ff0000;
+    color: #ff0000;
   }
 
   /* Go button */
@@ -439,6 +613,19 @@
     font-size: 14px;
     letter-spacing: 6px;
     color: var(--text-dim);
+  }
+  .live-logo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .live-set-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    min-height: 12px;
   }
   .live-set-time {
     font-family: 'Share Tech Mono', monospace;
@@ -820,6 +1007,7 @@
 <!-- ═══════════ SETUP PHASE ═══════════ -->
 <div id="setup-phase" class="phase active">
   <div class="setup-title">KNUCKLEBONES</div>
+  <div class="setup-set-name" id="setup-set-name"></div>
   <div class="setup-subtitle">IMPROV TIMER SYSTEM</div>
 
   <div class="setup-panel">
@@ -853,6 +1041,7 @@
     <div class="mode-tabs">
       <div class="mode-tab active" data-mode="random" onclick="switchMode('random')">RANDOMIZE</div>
       <div class="mode-tab" data-mode="preset" onclick="switchMode('preset')">PRESET</div>
+      <div class="mode-tab" data-mode="custom" onclick="switchMode('custom')">CUSTOM</div>
     </div>
 
     <div id="random-mode" class="mode-content active">
@@ -872,6 +1061,32 @@
         <div class="preset-btn" data-preset="bookend" onclick="setPreset('bookend')">BOOKENDS — LONG/SHORT/LONG</div>
         <div class="preset-btn" data-preset="rapid-fire" onclick="setPreset('rapid-fire')">RAPID FIRE — ALL 0:15 SCENES</div>
         <div class="preset-btn" data-preset="chaos" onclick="setPreset('chaos')">CHAOS — WILD VARIATION</div>
+      </div>
+    </div>
+
+    <div id="custom-mode" class="mode-content">
+      <div class="custom-set-info">
+        <div class="custom-input-row">
+          <label class="custom-label">SET NAME</label>
+          <input type="text" id="set-name" class="custom-text-input" placeholder="Opening Night Set" maxlength="50">
+        </div>
+        <div class="custom-input-row">
+          <label class="custom-label">SET DESCRIPTION</label>
+          <textarea id="set-description" class="custom-textarea" placeholder="Describe what this set is designed for..." maxlength="200"></textarea>
+        </div>
+      </div>
+
+      <div class="custom-scene-builder">
+        <div class="custom-builder-header">
+          <span class="custom-label">BUILD YOUR RUNDOWN</span>
+          <span class="custom-total-time" id="custom-total-time">TOTAL: 0:00</span>
+        </div>
+        <div class="custom-add-scene">
+          <input type="number" id="scene-duration-input" class="scene-duration-input" placeholder="60" min="5" max="600" value="60" onkeypress="if(event.key==='Enter') addCustomScene()">
+          <span class="scene-duration-label">SECONDS</span>
+          <button class="add-scene-btn" onclick="addCustomScene()">+ ADD SCENE</button>
+        </div>
+        <div class="custom-scenes-list" id="custom-scenes-list"></div>
       </div>
     </div>
   </div>
@@ -938,7 +1153,10 @@
 <!-- ═══════════ LIVE PHASE ═══════════ -->
 <div id="live-phase" class="phase">
   <div class="live-top-bar">
-    <div class="live-logo">KNUCKLEBONES</div>
+    <div class="live-logo-container">
+      <div class="live-logo">KNUCKLEBONES</div>
+      <div class="live-set-name" id="live-set-name"></div>
+    </div>
     <div class="live-set-time" id="live-set-time">SET: 25:00</div>
   </div>
 
@@ -997,6 +1215,9 @@ const state = {
   isStageView: false,
   channel: null,
   allowFiveSec: false,
+  setName: '',
+  setDescription: '',
+  customScenes: [],
 
 };
 
@@ -1060,6 +1281,7 @@ function switchMode(mode) {
   document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
   document.getElementById('random-mode').classList.toggle('active', mode === 'random');
   document.getElementById('preset-mode').classList.toggle('active', mode === 'preset');
+  document.getElementById('custom-mode').classList.toggle('active', mode === 'custom');
 }
 
 function setMultiplier(m) {
@@ -1076,6 +1298,62 @@ function toggleFiveSecond() {
   const cb = document.getElementById('five-sec-toggle');
   state.allowFiveSec = cb.checked;
 }
+
+// ═══════════ CUSTOM MODE FUNCTIONS ═══════════
+function addCustomScene() {
+  const input = document.getElementById('scene-duration-input');
+  const duration = parseInt(input.value);
+  if (!duration || duration < 5 || duration > 600) {
+    alert('Scene duration must be between 5 and 600 seconds');
+    return;
+  }
+  state.customScenes.push(duration);
+  renderCustomScenes();
+  updateCustomTotal();
+  input.value = 60; // Reset to default
+}
+
+function removeCustomScene(index) {
+  state.customScenes.splice(index, 1);
+  renderCustomScenes();
+  updateCustomTotal();
+}
+
+function renderCustomScenes() {
+  const container = document.getElementById('custom-scenes-list');
+  if (state.customScenes.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+  container.innerHTML = state.customScenes.map((duration, index) => {
+    const num = String(index + 1).padStart(2, '0');
+    const m = Math.floor(duration / 60);
+    const s = duration % 60;
+    const timeStr = `${m}:${String(s).padStart(2, '0')}`;
+    return `
+      <div class="custom-scene-item">
+        <span class="custom-scene-num">${num}</span>
+        <span class="custom-scene-time">${timeStr}</span>
+        <button class="remove-scene-btn" onclick="removeCustomScene(${index})">REMOVE</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateCustomTotal() {
+  const total = state.customScenes.reduce((sum, d) => sum + d, 0);
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  const timeStr = `${m}:${String(s).padStart(2, '0')}`;
+  document.getElementById('custom-total-time').textContent = `TOTAL: ${timeStr}`;
+}
+
+function updateSetNameDisplay() {
+  const setName = state.setName || '';
+  document.getElementById('setup-set-name').textContent = setName;
+  document.getElementById('live-set-name').textContent = setName;
+}
+
 
 // ═══════════ SOUND HANDLING ═══════════
 function handleSoundUpload(input, type) {
@@ -1106,16 +1384,29 @@ function previewSound(type) {
 
 // ═══════════ RUNDOWN GENERATION ═══════════
 function generateRundown() {
+function generateRundown() {
   state.players = parseInt(document.getElementById('player-count').value) || 12;
   state.setMinutes = parseInt(document.getElementById('set-minutes').value) || 25;
   state.totalSetTime = state.setMinutes * 60;
   state.allowFiveSec = document.getElementById('five-sec-toggle').checked;
 
+  // Capture set name and description from inputs
+  state.setName = document.getElementById('set-name')?.value || '';
+  state.setDescription = document.getElementById('set-description')?.value || '';
+  updateSetNameDisplay();
+
   const editCueDur = Math.ceil(state.editSoundDuration || 3); // default 3s if no sound loaded
 
-  if (state.mode === 'random') {
+  if (state.mode === 'custom') {
+    if (state.customScenes.length === 0) {
+      alert('Please add at least one scene to your custom rundown');
+      return;
+    }
+    state.scenes = [...state.customScenes];
+    state.totalSetTime = state.scenes.reduce((sum, d) => sum + d, 0) + (state.scenes.length * editCueDur);
+  } else if (state.mode === 'random') {
     generateRandomRundown(editCueDur);
-  } else {
+  } else if (state.mode === 'preset') {
     generatePresetRundown(editCueDur);
   }
 
@@ -1592,6 +1883,7 @@ function formatTimeShort(seconds) {
 
 // ═══════════ LOCALSTORAGE PERSISTENCE ═══════════
 function getSetupState() {
+function getSetupState() {
   return {
     players: parseInt(document.getElementById('player-count').value) || 12,
     setMinutes: parseInt(document.getElementById('set-minutes').value) || 25,
@@ -1601,8 +1893,12 @@ function getSetupState() {
     allowFiveSec: document.getElementById('five-sec-toggle').checked,
     editSoundName: document.getElementById('edit-sound-name').textContent,
     finaleSoundName: document.getElementById('finale-sound-name').textContent,
+    setName: state.setName,
+    setDescription: state.setDescription,
+    customScenes: state.customScenes,
     timestamp: new Date().toISOString(),
   };
+}
 }
 
 function saveToLocalStorage() {
@@ -1635,8 +1931,27 @@ function applySetup(cfg) {
   if (cfg.finaleSoundName && cfg.finaleSoundName !== 'No file loaded') {
     document.getElementById('finale-sound-name').textContent = cfg.finaleSoundName + ' (re-upload needed)';
   }
+  // Restore custom set data
+  if (cfg.setName) {
+    state.setName = cfg.setName;
+    if (document.getElementById('set-name')) {
+      document.getElementById('set-name').value = cfg.setName;
+    }
+  }
+  if (cfg.setDescription) {
+    state.setDescription = cfg.setDescription;
+    if (document.getElementById('set-description')) {
+      document.getElementById('set-description').value = cfg.setDescription;
+    }
+  }
+  if (cfg.customScenes && Array.isArray(cfg.customScenes)) {
+    state.customScenes = cfg.customScenes;
+    renderCustomScenes();
+    updateCustomTotal();
+  }
+  updateSetNameDisplay();
 }
-
+}
 function loadPreviousSetup() {
   const cfg = loadFromLocalStorage();
   if (cfg) applySetup(cfg);
