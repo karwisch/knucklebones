@@ -436,6 +436,26 @@
     gap: 12px;
   }
   .custom-scene-item:last-child { border-bottom: none; }
+  .drag-handle {
+    font-family: monospace;
+    font-size: 16px;
+    color: var(--text-dim);
+    cursor: grab;
+    user-select: none;
+    margin-right: 8px;
+    line-height: 1;
+  }
+  .custom-scene-item[draggable="true"] {
+    cursor: grab;
+  }
+  .custom-scene-item.dragging {
+    opacity: 0.4;
+    cursor: grabbing;
+  }
+  .custom-scene-item.drag-over {
+    border-top: 2px solid var(--accent);
+    padding-top: 4px;
+  }
   .custom-scene-num {
     font-family: 'DSEG7 Classic', monospace;
     font-size: 11px;
@@ -1331,7 +1351,12 @@ function renderCustomScenes() {
     const s = duration % 60;
     const timeStr = `${m}:${String(s).padStart(2, '0')}`;
     return `
-      <div class="custom-scene-item">
+      <div class="custom-scene-item" draggable="true" data-index="${index}"
+           ondragstart="handleDragStart(event)" 
+           ondragover="handleDragOver(event)" 
+           ondrop="handleDrop(event)"
+           ondragend="handleDragEnd(event)">
+        <span class="drag-handle">⋮⋮</span>
         <span class="custom-scene-num">${num}</span>
         <span class="custom-scene-time">${timeStr}</span>
         <button class="remove-scene-btn" onclick="removeCustomScene(${index})">REMOVE</button>
@@ -1340,6 +1365,56 @@ function renderCustomScenes() {
   }).join('');
 }
 
+// ═══════════ DRAG AND DROP HANDLERS ═══════════
+let draggedIndex = null;
+
+function handleDragStart(event) {
+  draggedIndex = parseInt(event.currentTarget.dataset.index);
+  event.currentTarget.classList.add('dragging');
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/html', event.currentTarget.innerHTML);
+}
+
+function handleDragOver(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+  const target = event.currentTarget;
+  if (target.classList.contains('custom-scene-item')) {
+    target.classList.add('drag-over');
+  }
+  return false;
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const target = event.currentTarget;
+  target.classList.remove('drag-over');
+  
+  const dropIndex = parseInt(target.dataset.index);
+  
+  if (draggedIndex !== null && draggedIndex !== dropIndex) {
+    // Reorder the array
+    const draggedScene = state.customScenes[draggedIndex];
+    state.customScenes.splice(draggedIndex, 1);
+    state.customScenes.splice(dropIndex, 0, draggedScene);
+    
+    // Re-render the list
+    renderCustomScenes();
+  }
+  
+  return false;
+}
+
+function handleDragEnd(event) {
+  event.currentTarget.classList.remove('dragging');
+  // Remove drag-over class from all items
+  document.querySelectorAll('.custom-scene-item').forEach(item => {
+    item.classList.remove('drag-over');
+  });
+  draggedIndex = null;
+}
 function updateCustomTotal() {
   const total = state.customScenes.reduce((sum, d) => sum + d, 0);
   const m = Math.floor(total / 60);
