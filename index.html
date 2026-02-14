@@ -1444,7 +1444,11 @@ function handleSoundUpload(input, type) {
     if (type === 'edit') {
       state.editSound = audio;
       state.editSoundDuration = audio.duration;
-      document.getElementById('edit-sound-name').textContent = file.name;
+      const nameEl = document.getElementById('edit-sound-name');
+      nameEl.textContent = file.name;
+      // Reset styling from default sound
+      nameEl.style.fontStyle = 'normal';
+      nameEl.style.opacity = '1';
     } else {
       state.finaleSound = audio;
       document.getElementById('finale-sound-name').textContent = file.name;
@@ -1459,6 +1463,25 @@ function previewSound(type) {
     audio.play();
     setTimeout(() => { audio.pause(); audio.currentTime = 0; }, type === 'edit' ? 5000 : 5000);
   }
+}
+
+function loadDefaultEditSound() {
+  // Default edit sound from Dropbox - used as fallback if user doesn't upload custom sound
+  const defaultUrl = 'https://www.dropbox.com/scl/fi/jziddhp2ztn098rf55pvs/KnucklebonesEditSound.mp3?rlkey=2l83mj6uun2964zxc2psmo91n&st=u2ho9mi4&dl=1';
+  const audio = new Audio(defaultUrl);
+
+  audio.addEventListener('loadedmetadata', () => {
+    state.editSound = audio;
+    state.editSoundDuration = audio.duration;
+    document.getElementById('edit-sound-name').textContent = 'Default edit sound';
+    document.getElementById('edit-sound-name').style.fontStyle = 'italic';
+    document.getElementById('edit-sound-name').style.opacity = '0.7';
+  });
+
+  audio.addEventListener('error', (e) => {
+    console.warn('Could not load default edit sound:', e);
+    document.getElementById('edit-sound-name').textContent = 'No file loaded';
+  });
 }
 
 // ═══════════ RUNDOWN GENERATION ═══════════
@@ -2167,6 +2190,7 @@ autoFade = function() {
 // ═══════════ INIT ═══════════
 checkStageView();
 initBroadcast();
+loadDefaultEditSound();
 
 // Check for previous setup on load
 if (!state.isStageView) {
