@@ -1459,7 +1459,6 @@ function previewSound(type) {
 
 // ═══════════ RUNDOWN GENERATION ═══════════
 function generateRundown() {
-function generateRundown() {
   state.players = parseInt(document.getElementById('player-count').value) || 12;
   state.setMinutes = parseInt(document.getElementById('set-minutes').value) || 25;
   state.totalSetTime = state.setMinutes * 60;
@@ -2025,7 +2024,6 @@ function applySetup(cfg) {
     updateCustomTotal();
   }
   updateSetNameDisplay();
-}
 }
 function loadPreviousSetup() {
   const cfg = loadFromLocalStorage();
