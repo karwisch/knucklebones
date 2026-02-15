@@ -2251,13 +2251,36 @@ commitAndGo = function() {
     document.getElementById('commit-btn').textContent = '♪ PREVIEWING CUE...';
     document.getElementById('commit-btn').style.pointerEvents = 'none';
     state.editSound.currentTime = 0;
-    state.editSound.play();
-    state.editSound.onended = () => {
-      document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
-      document.getElementById('commit-btn').style.pointerEvents = '';
-      // Short pause after cue preview, then start
-      setTimeout(() => startLiveSet(), 1500);
-    };
+
+    // Handle play() promise to catch mobile autoplay blocks
+    const playPromise = state.editSound.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Audio playing successfully - wait for it to end
+          state.editSound.onended = () => {
+            document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
+            document.getElementById('commit-btn').style.pointerEvents = '';
+            // Short pause after cue preview, then start
+            setTimeout(() => startLiveSet(), 1500);
+          };
+        })
+        .catch((error) => {
+          // Audio blocked (mobile autoplay restriction) - start anyway
+          console.log('Audio autoplay blocked, starting without cue preview:', error);
+          document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
+          document.getElementById('commit-btn').style.pointerEvents = '';
+          startLiveSet();
+        });
+    } else {
+      // Fallback for browsers that don't return a promise
+      state.editSound.onended = () => {
+        document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
+        document.getElementById('commit-btn').style.pointerEvents = '';
+        setTimeout(() => startLiveSet(), 1500);
+      };
+    }
   } else {
     startLiveSet();
   }
