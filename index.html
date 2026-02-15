@@ -1044,6 +1044,17 @@
     white-space: nowrap;
   }
 
+  /* Ko-fi link in live phase - more compact */
+  .kofi-link-live {
+    margin: 8px auto 0;
+    padding: 8px 16px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  .kofi-link-live .kofi-logo {
+    height: 18px;
+  }
+
   /* Welcome modal */
   .modal-overlay {
     position: fixed;
@@ -1172,6 +1183,53 @@
     .kofi-logo {
       height: 20px;
     }
+
+    /* Live phase mobile adjustments */
+    #live-phase {
+      padding: 12px 16px;
+      gap: 8px;
+    }
+
+    .live-logo {
+      font-size: 18px;
+      letter-spacing: 4px;
+    }
+
+    .live-set-time {
+      font-size: 11px;
+    }
+
+    .scene-label {
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+    .next-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .live-rundown-mini {
+      max-height: 60px;
+      overflow-y: auto;
+      padding: 2px 0;
+    }
+
+    .ctrl-btn {
+      padding: 10px;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .kofi-link-live {
+      margin: 6px auto 0;
+      padding: 6px 12px;
+      font-size: 10px;
+      gap: 6px;
+    }
+    .kofi-link-live .kofi-logo {
+      height: 16px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -1226,6 +1284,68 @@
     .kofi-text {
       text-align: center;
       white-space: normal;
+    }
+
+    /* Live phase compact mobile adjustments */
+    #live-phase {
+      padding: 8px 12px;
+      gap: 6px;
+    }
+
+    .live-logo {
+      font-size: 16px;
+      letter-spacing: 3px;
+    }
+
+    .live-set-time {
+      font-size: 10px;
+    }
+
+    .scene-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .next-label {
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .live-rundown-mini {
+      max-height: 50px;
+      overflow-y: auto;
+      gap: 2px;
+    }
+
+    .mini-scene {
+      font-size: 10px;
+      padding: 2px 4px;
+    }
+
+    .ctrl-btn {
+      padding: 8px 6px;
+      font-size: 9px;
+      letter-spacing: 0.5px;
+    }
+
+    .kofi-link-live {
+      flex-direction: column;
+      margin: 4px auto 0;
+      padding: 6px;
+      font-size: 9px;
+      gap: 4px;
+    }
+    .kofi-link-live .kofi-logo {
+      height: 14px;
+    }
+    .kofi-link-live .kofi-text {
+      white-space: normal;
+      text-align: center;
+      font-size: 8px;
+    }
+
+    .progress-container {
+      padding: 0 10px;
     }
   }
 </style>
@@ -1432,6 +1552,12 @@
     <button class="auto-fade-btn" onclick="autoFade()">AUTO FADE (5s)</button>
     <button class="new-set-btn" onclick="resetToSetup()">NEW SET</button>
   </div>
+
+  <!-- Ko-fi Support Link -->
+  <a href="https://ko-fi.com/karwisch" target="_blank" rel="noopener noreferrer" class="kofi-link kofi-link-live">
+    <img src="https://untanglednarrative.com/apps/knucklebones/kofilogo.png" alt="Ko-fi" class="kofi-logo">
+    <span class="kofi-text">Enjoy this app? Support a Scholarship!</span>
+  </a>
 </div>
 
 <script>
