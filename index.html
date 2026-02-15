@@ -1094,6 +1094,9 @@
 
     .rundown-container {
       padding: 12px;
+      /* Reserve space for header (~50px) + buttons (~100px) + gaps/padding (~50px) = 200px */
+      max-height: calc(100vh - 200px);
+      max-height: calc(100dvh - 200px);  /* iOS Safari support with fallback */
     }
 
     .rundown-scene {
@@ -1104,6 +1107,7 @@
     .preview-actions {
       flex-direction: column;
       gap: 8px;
+      flex-shrink: 0;  /* Prevent buttons from being pushed off-screen */
     }
 
     .preview-btn {
@@ -1127,6 +1131,16 @@
 
     .preview-stats {
       font-size: 10px;
+    }
+
+    .rundown-container {
+      /* Smaller reserved space due to reduced padding: ~180px total */
+      max-height: calc(100vh - 180px);
+      max-height: calc(100dvh - 180px);  /* iOS Safari support with fallback */
+    }
+
+    .preview-actions {
+      flex-shrink: 0;  /* Also protect buttons at smaller viewport */
     }
   }
 </style>
