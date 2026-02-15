@@ -1584,8 +1584,8 @@ function previewSound(type) {
 }
 
 function loadDefaultEditSound() {
-  // Default edit sound from Dropbox - used as fallback if user doesn't upload custom sound
-  const defaultUrl = 'https://www.dropbox.com/scl/fi/jziddhp2ztn098rf55pvs/KnucklebonesEditSound.mp3?rlkey=2l83mj6uun2964zxc2psmo91n&st=u2ho9mi4&dl=1';
+  // Default edit sound from local file - place "default-edit-sound.mp3" in same folder as index.html
+  const defaultUrl = './default-edit-sound.mp3';
   const audio = new Audio(defaultUrl);
 
   audio.addEventListener('loadedmetadata', () => {
@@ -1594,17 +1594,21 @@ function loadDefaultEditSound() {
     document.getElementById('edit-sound-name').textContent = 'Default edit sound';
     document.getElementById('edit-sound-name').style.fontStyle = 'italic';
     document.getElementById('edit-sound-name').style.opacity = '0.7';
+    console.log('✓ Default edit sound loaded successfully');
   });
 
   audio.addEventListener('error', (e) => {
-    console.warn('Could not load default edit sound:', e);
-    document.getElementById('edit-sound-name').textContent = 'No file loaded';
+    console.warn('Could not load default edit sound from ./default-edit-sound.mp3:', e);
+    console.log('Place "default-edit-sound.mp3" in the same folder as index.html, or upload your own file.');
+    document.getElementById('edit-sound-name').textContent = 'Upload audio file';
+    document.getElementById('edit-sound-name').style.fontStyle = 'normal';
+    document.getElementById('edit-sound-name').style.opacity = '0.6';
   });
 }
 
 function loadDefaultFinaleSound() {
-  // Default finale song from Dropbox - used as fallback if user doesn't upload custom song
-  const defaultUrl = 'https://www.dropbox.com/scl/fi/hi7ciaocaw3392gnc0nv3/Silent-Partner-Mob-Battle-No-Copyright-Music.mp3?dl=1';
+  // Default finale song from local file - place "default-finale-song.mp3" in same folder as index.html
+  const defaultUrl = './default-finale-song.mp3';
   const audio = new Audio(defaultUrl);
 
   audio.addEventListener('loadedmetadata', () => {
@@ -1612,11 +1616,15 @@ function loadDefaultFinaleSound() {
     document.getElementById('finale-sound-name').textContent = 'Default finale song';
     document.getElementById('finale-sound-name').style.fontStyle = 'italic';
     document.getElementById('finale-sound-name').style.opacity = '0.7';
+    console.log('✓ Default finale song loaded successfully');
   });
 
   audio.addEventListener('error', (e) => {
-    console.warn('Could not load default finale sound:', e);
-    document.getElementById('finale-sound-name').textContent = 'No file loaded';
+    console.warn('Could not load default finale sound from ./default-finale-song.mp3:', e);
+    console.log('Place "default-finale-song.mp3" in the same folder as index.html, or upload your own file.');
+    document.getElementById('finale-sound-name').textContent = 'Upload audio file';
+    document.getElementById('finale-sound-name').style.fontStyle = 'normal';
+    document.getElementById('finale-sound-name').style.opacity = '0.6';
   });
 }
 
