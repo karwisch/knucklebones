@@ -1756,10 +1756,18 @@ function tick() {
 
   if (state.sceneTimeRemaining <= 0) {
     clearInterval(state.intervalId);
-    playEditCue(() => {
-      state.totalElapsed += Math.ceil(state.editSoundDuration || 3);
-      startScene(state.currentScene + 1);
-    });
+
+    // Check if this was the last scene
+    if (state.currentScene >= state.scenes.length - 1) {
+      // Last scene complete - go straight to finale (no edit cue)
+      finishSet();
+    } else {
+      // Not the last scene - play edit cue before next scene
+      playEditCue(() => {
+        state.totalElapsed += Math.ceil(state.editSoundDuration || 3);
+        startScene(state.currentScene + 1);
+      });
+    }
   }
 }
 
