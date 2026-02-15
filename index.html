@@ -1095,8 +1095,12 @@
     .rundown-container {
       padding: 12px;
       /* Reserve space for header (~50px) + buttons (~100px) + gaps/padding (~50px) = 200px */
+      flex: 1 1 auto;
+      min-height: 0;  /* Allow flex item to shrink below content size */
       max-height: calc(100vh - 200px);
       max-height: calc(100dvh - 200px);  /* iOS Safari support with fallback */
+      overflow-y: auto;  /* Ensure scrolling works */
+      -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
     }
 
     .rundown-scene {
@@ -1135,8 +1139,12 @@
 
     .rundown-container {
       /* Smaller reserved space due to reduced padding: ~180px total */
+      flex: 1 1 auto;
+      min-height: 0;  /* Allow flex item to shrink below content size */
       max-height: calc(100vh - 180px);
       max-height: calc(100dvh - 180px);  /* iOS Safari support with fallback */
+      overflow-y: auto;  /* Ensure scrolling works */
+      -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
     }
 
     .preview-actions {
