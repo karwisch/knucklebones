@@ -525,11 +525,11 @@
     border: 2px solid var(--led-orange);
     color: var(--led-orange);
     font-family: 'Share Tech Mono', monospace;
-    font-size: 16px;
-    letter-spacing: 4px;
+    font-size: 18px;
+    letter-spacing: 8px;
     text-transform: uppercase;
-    padding: 14px;
-    margin-bottom: 12px;
+    padding: 12px;
+    margin: 8px auto;
     cursor: pointer;
     transition: all 0.2s;
     display: flex;
@@ -1210,6 +1210,13 @@
       margin: 16px auto;
     }
 
+    .audio-unlock-btn {
+      padding: 14px;
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin: 16px auto;
+    }
+
     .config-btn {
       font-size: 9px;
       padding: 8px;
@@ -1408,6 +1415,13 @@
     }
 
     .go-btn {
+      padding: 12px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin: 12px auto;
+    }
+
+    .audio-unlock-btn {
       padding: 12px;
       font-size: 12px;
       letter-spacing: 3px;
@@ -2930,6 +2944,19 @@ function showAudioUnlockButtonIfMobile() {
 }
 
 // ═══════════ INIT ═══════════
+// Prevent browser from restoring scroll position and force scroll to top
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+// Also ensure setup phase starts at top
+setTimeout(() => {
+  const setupPhase = document.getElementById('setup-phase');
+  if (setupPhase) {
+    setupPhase.scrollTop = 0;
+  }
+}, 0);
+
 checkStageView();
 initBroadcast();
 loadDefaultEditSound();
