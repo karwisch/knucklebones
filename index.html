@@ -1011,6 +1011,40 @@
   }
   .config-btn:hover { border-color: var(--border-mid); color: var(--text-mid); }
 
+  /* Ko-fi Support Link */
+  .kofi-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 24px auto 16px;
+    padding: 12px 20px;
+    max-width: 600px;
+    background: rgba(255, 94, 77, 0.1);
+    border: 1px solid rgba(255, 94, 77, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-mid);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+  }
+  .kofi-link:hover {
+    background: rgba(255, 94, 77, 0.15);
+    border-color: rgba(255, 94, 77, 0.5);
+    color: var(--text-bright);
+    transform: translateY(-2px);
+  }
+  .kofi-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+  .kofi-text {
+    white-space: nowrap;
+  }
+
   /* Welcome modal */
   .modal-overlay {
     position: fixed;
@@ -1119,6 +1153,16 @@
       font-size: 12px;
       letter-spacing: 3px;
     }
+
+    .kofi-link {
+      padding: 10px 16px;
+      gap: 10px;
+      font-size: 11px;
+      margin: 20px auto 12px;
+    }
+    .kofi-logo {
+      height: 20px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -1149,6 +1193,21 @@
 
     .preview-actions {
       flex-shrink: 0;  /* Also protect buttons at smaller viewport */
+    }
+
+    .kofi-link {
+      flex-direction: column;
+      padding: 12px;
+      gap: 8px;
+      font-size: 10px;
+      margin: 16px auto 8px;
+    }
+    .kofi-logo {
+      height: 18px;
+    }
+    .kofi-text {
+      text-align: center;
+      white-space: normal;
     }
   }
 </style>
@@ -1275,6 +1334,12 @@
     <button class="config-btn" onclick="document.getElementById('config-load-input').click()">LOAD SHOW CONFIG</button>
     <input type="file" id="config-load-input" class="hidden-input" accept=".json" onchange="loadShowConfig(this)">
   </div>
+
+  <!-- Ko-fi Support Link -->
+  <a href="https://ko-fi.com/karwisch" target="_blank" rel="noopener noreferrer" class="kofi-link">
+    <img src="https://untanglednarrative.com/apps/knucklebones/kofilogo.png" alt="Ko-fi" class="kofi-logo">
+    <span class="kofi-text">Enjoy this app? Support a Scholarship!</span>
+  </a>
 </div>
 
 <!-- ═══════════ WELCOME MODAL ═══════════ -->
