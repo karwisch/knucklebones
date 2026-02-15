@@ -1451,7 +1451,11 @@ function handleSoundUpload(input, type) {
       nameEl.style.opacity = '1';
     } else {
       state.finaleSound = audio;
-      document.getElementById('finale-sound-name').textContent = file.name;
+      const nameEl = document.getElementById('finale-sound-name');
+      nameEl.textContent = file.name;
+      // Reset styling from default sound
+      nameEl.style.fontStyle = 'normal';
+      nameEl.style.opacity = '1';
     }
   });
 }
@@ -1481,6 +1485,24 @@ function loadDefaultEditSound() {
   audio.addEventListener('error', (e) => {
     console.warn('Could not load default edit sound:', e);
     document.getElementById('edit-sound-name').textContent = 'No file loaded';
+  });
+}
+
+function loadDefaultFinaleSound() {
+  // Default finale song from Dropbox - used as fallback if user doesn't upload custom song
+  const defaultUrl = 'https://www.dropbox.com/scl/fi/hi7ciaocaw3392gnc0nv3/Silent-Partner-Mob-Battle-No-Copyright-Music.mp3?dl=1';
+  const audio = new Audio(defaultUrl);
+
+  audio.addEventListener('loadedmetadata', () => {
+    state.finaleSound = audio;
+    document.getElementById('finale-sound-name').textContent = 'Default finale song';
+    document.getElementById('finale-sound-name').style.fontStyle = 'italic';
+    document.getElementById('finale-sound-name').style.opacity = '0.7';
+  });
+
+  audio.addEventListener('error', (e) => {
+    console.warn('Could not load default finale sound:', e);
+    document.getElementById('finale-sound-name').textContent = 'No file loaded';
   });
 }
 
@@ -2191,6 +2213,7 @@ autoFade = function() {
 checkStageView();
 initBroadcast();
 loadDefaultEditSound();
+loadDefaultFinaleSound();
 
 // Check for previous setup on load
 if (!state.isStageView) {
