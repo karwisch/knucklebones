@@ -137,6 +137,19 @@
     text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
     text-align: center;
   }
+  .beta-badge {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 4px 8px;
+    background: rgba(255, 165, 0, 0.15);
+    border: 1px solid rgba(255, 165, 0, 0.5);
+    color: #ffb84d;
+    border-radius: 4px;
+    margin-left: 12px;
+    vertical-align: middle;
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+  }
   .setup-subtitle {
     font-size: 15px;
     letter-spacing: 2px;
@@ -1131,6 +1144,12 @@
       letter-spacing: 1px;
     }
 
+    .beta-badge {
+      font-size: 10px;
+      padding: 3px 6px;
+      margin-left: 8px;
+    }
+
     /* Preview phase mobile adjustments */
     #preview-phase {
       padding: 12px;
@@ -1241,6 +1260,13 @@
     .setup-subtitle {
       font-size: 11px;
       letter-spacing: 0.5px;
+    }
+
+    .beta-badge {
+      font-size: 8px;
+      padding: 2px 5px;
+      margin-left: 6px;
+      letter-spacing: 1px;
     }
 
     #preview-phase {
@@ -1354,7 +1380,7 @@
 
 <!-- ═══════════ SETUP PHASE ═══════════ -->
 <div id="setup-phase" class="phase active">
-  <div class="setup-title">KNUCKLEBONES</div>
+  <div class="setup-title">KNUCKLEBONES <span class="beta-badge">BETA</span></div>
   <div class="setup-set-name" id="setup-set-name"></div>
   <div class="setup-subtitle">An App for Improv Shows, Jams, and Rehearsals</div>
 
