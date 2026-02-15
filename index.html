@@ -50,7 +50,7 @@
     --bg-inset: #050505;
     --border-dim: #222222;
     --border-mid: #333333;
-    --text-dim: #444444;
+    --text-dim: #666666;
     --text-mid: #888888;
     --text-bright: #cccccc;
     --led-off: #0d1a0d;
@@ -1036,6 +1036,61 @@
   /* Setup scrollable */
   #setup-phase {
     overflow-y: auto;
+  }
+
+  /* ═══════════ MOBILE RESPONSIVE ═══════════ */
+  @media (max-width: 768px) {
+    /* Preview phase mobile adjustments */
+    #preview-phase {
+      padding: 12px;
+      gap: 12px;
+    }
+
+    .preview-title {
+      font-size: 16px;
+      letter-spacing: 4px;
+    }
+
+    .preview-stats {
+      font-size: 11px;
+    }
+
+    .rundown-container {
+      padding: 12px;
+    }
+
+    .rundown-scene {
+      font-size: 12px;
+      padding: 8px;
+    }
+
+    .preview-actions {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .preview-btn {
+      padding: 12px;
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Extra small mobile adjustments */
+    #preview-phase {
+      padding: 8px;
+      gap: 8px;
+    }
+
+    .preview-title {
+      font-size: 14px;
+      letter-spacing: 3px;
+    }
+
+    .preview-stats {
+      font-size: 10px;
+    }
   }
 </style>
 </head>
