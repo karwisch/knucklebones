@@ -1526,6 +1526,8 @@ function handleSoundUpload(input, type) {
       nameEl.style.fontStyle = 'normal';
       nameEl.style.opacity = '1';
     }
+    // Save file name to localStorage so it persists across sessions
+    saveToLocalStorage();
   });
 }
 
@@ -2108,7 +2110,6 @@ function formatTimeShort(seconds) {
 
 // ═══════════ LOCALSTORAGE PERSISTENCE ═══════════
 function getSetupState() {
-function getSetupState() {
   return {
     players: parseInt(document.getElementById('player-count').value) || 12,
     setMinutes: parseInt(document.getElementById('set-minutes').value) || 25,
@@ -2123,7 +2124,6 @@ function getSetupState() {
     customScenes: state.customScenes,
     timestamp: new Date().toISOString(),
   };
-}
 }
 
 function saveToLocalStorage() {
