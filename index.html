@@ -889,6 +889,19 @@
   }
   .auto-fade-btn:hover { background: rgba(255, 136, 0, 0.08); }
 
+  .new-set-btn {
+    background: transparent;
+    border: 1px solid var(--text-bright);
+    color: var(--text-bright);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    padding: 8px 24px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .new-set-btn:hover { background: rgba(255, 255, 255, 0.08); }
+
   /* Hidden file inputs */
   .hidden-input { display: none; }
 
@@ -1214,6 +1227,7 @@
       <span class="fade-vol-label" id="fade-vol-display">100%</span>
     </div>
     <button class="auto-fade-btn" onclick="autoFade()">AUTO FADE (5s)</button>
+    <button class="new-set-btn" onclick="resetToSetup()">NEW SET</button>
   </div>
 </div>
 
@@ -1936,6 +1950,31 @@ function autoFade() {
     slider.value = Math.round(current);
     setFinaleVolume(Math.round(current));
   }, interval);
+}
+
+function resetToSetup() {
+  // Stop any playing audio
+  if (state.editSound) { state.editSound.pause(); state.editSound.currentTime = 0; }
+  if (state.finaleSound) { state.finaleSound.pause(); state.finaleSound.currentTime = 0; }
+
+  // Clear any running intervals
+  if (state.intervalId) clearInterval(state.intervalId);
+
+  // Reset state
+  state.isRunning = false;
+  state.isPaused = false;
+  state.currentScene = 0;
+  state.totalElapsed = 0;
+  state.sceneTimeRemaining = 0;
+
+  // Reset finale controls
+  document.getElementById('finale-controls').classList.remove('active');
+  document.getElementById('fade-slider').value = 100;
+  document.getElementById('fade-vol-display').textContent = '100%';
+  if (state.finaleSound) state.finaleSound.volume = 1;
+
+  // Return to setup phase
+  showPhase('setup');
 }
 
 // ═══════════ BROADCAST CHANNEL (STAGE VIEW) ═══════════
