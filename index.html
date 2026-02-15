@@ -505,6 +505,43 @@
     box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
   }
 
+  /* Audio Unlock Button (Mobile) */
+  .audio-unlock-btn {
+    max-width: 600px;
+    width: 100%;
+    background: transparent;
+    border: 2px solid var(--led-orange);
+    color: var(--led-orange);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .audio-unlock-btn:hover {
+    background: rgba(255, 136, 0, 0.08);
+    box-shadow: 0 0 20px rgba(255, 136, 0, 0.2);
+  }
+  .audio-unlock-btn.unlocked {
+    border-color: var(--led-green);
+    color: var(--led-green);
+    cursor: default;
+  }
+  .audio-unlock-btn.unlocked:hover {
+    background: rgba(0, 255, 65, 0.05);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+  }
+  #audio-unlock-icon {
+    font-size: 20px;
+  }
+
   /* ── PREVIEW PHASE ── */
   #preview-phase {
     padding: 24px 40px;
@@ -1202,6 +1239,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Mobile Audio Unlock Button -->
+  <button class="audio-unlock-btn" id="audio-unlock-btn" onclick="unlockAudio()" style="display: none;">
+    <span id="audio-unlock-icon">📱</span>
+    <span id="audio-unlock-text">TAP TO ENABLE AUDIO</span>
+  </button>
 
   <button class="go-btn" onclick="generateRundown()">GENERATE RUNDOWN</button>
 
@@ -2334,11 +2377,66 @@ autoFade = function() {
   }, interval);
 };
 
+// ═══════════ MOBILE AUDIO UNLOCK ═══════════
+let audioUnlocked = false;
+
+function isMobileDevice() {
+  // Check for touch support and screen size
+  return ('ontouchstart' in window || navigator.maxTouchPoints > 0) &&
+         window.innerWidth <= 768;
+}
+
+function unlockAudio() {
+  if (audioUnlocked) return;
+
+  // Create a silent audio buffer to unlock the audio context
+  const silentAudio = new Audio();
+  silentAudio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+
+  const playPromise = silentAudio.play();
+
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        // Audio context unlocked!
+        audioUnlocked = true;
+        const btn = document.getElementById('audio-unlock-btn');
+        const icon = document.getElementById('audio-unlock-icon');
+        const text = document.getElementById('audio-unlock-text');
+
+        btn.classList.add('unlocked');
+        icon.textContent = '✓';
+        text.textContent = 'AUDIO READY';
+
+        // Also try to initialize existing sounds if they exist
+        if (state.editSound) {
+          state.editSound.load();
+        }
+        if (state.finaleSound) {
+          state.finaleSound.load();
+        }
+
+        console.log('Audio context unlocked for mobile playback');
+      })
+      .catch((error) => {
+        console.log('Failed to unlock audio:', error);
+        alert('Unable to enable audio. Please check your browser settings.');
+      });
+  }
+}
+
+function showAudioUnlockButtonIfMobile() {
+  if (isMobileDevice() && !state.isStageView) {
+    document.getElementById('audio-unlock-btn').style.display = 'flex';
+  }
+}
+
 // ═══════════ INIT ═══════════
 checkStageView();
 initBroadcast();
 loadDefaultEditSound();
 loadDefaultFinaleSound();
+showAudioUnlockButtonIfMobile();
 
 // Check for previous setup on load
 if (!state.isStageView) {
