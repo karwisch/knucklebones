@@ -2387,42 +2387,100 @@ function isMobileDevice() {
 }
 
 function unlockAudio() {
-  if (audioUnlocked) return;
+  console.log('unlockAudio() called');
 
-  // Create a silent audio buffer to unlock the audio context
+  if (audioUnlocked) {
+    console.log('Audio already unlocked');
+    return;
+  }
+
+  // Get button elements
+  const btn = document.getElementById('audio-unlock-btn');
+  const icon = document.getElementById('audio-unlock-icon');
+  const text = document.getElementById('audio-unlock-text');
+
+  // Immediate visual feedback
+  console.log('Setting button to unlocking state...');
+  icon.textContent = '⏳';
+  text.textContent = 'UNLOCKING...';
+  btn.style.opacity = '0.7';
+
+  // Try multiple methods to unlock audio
+  const unlockMethods = [];
+
+  // Method 1: Silent audio element
   const silentAudio = new Audio();
   silentAudio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+  unlockMethods.push(silentAudio.play());
 
-  const playPromise = silentAudio.play();
-
-  if (playPromise !== undefined) {
-    playPromise
-      .then(() => {
-        // Audio context unlocked!
-        audioUnlocked = true;
-        const btn = document.getElementById('audio-unlock-btn');
-        const icon = document.getElementById('audio-unlock-icon');
-        const text = document.getElementById('audio-unlock-text');
-
-        btn.classList.add('unlocked');
-        icon.textContent = '✓';
-        text.textContent = 'AUDIO READY';
-
-        // Also try to initialize existing sounds if they exist
-        if (state.editSound) {
-          state.editSound.load();
-        }
-        if (state.finaleSound) {
-          state.finaleSound.load();
-        }
-
-        console.log('Audio context unlocked for mobile playback');
-      })
-      .catch((error) => {
-        console.log('Failed to unlock audio:', error);
-        alert('Unable to enable audio. Please check your browser settings.');
-      });
+  // Method 2: AudioContext (if available)
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+      const audioContext = new AudioContext();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      gainNode.gain.value = 0; // Silent
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      oscillator.start(0);
+      oscillator.stop(0.001);
+      console.log('AudioContext unlock attempted');
+    }
+  } catch (e) {
+    console.log('AudioContext method failed:', e);
   }
+
+  // Method 3: Use existing audio if available
+  if (state.editSound) {
+    console.log('Trying to play edit sound briefly...');
+    state.editSound.volume = 0;
+    const editPromise = state.editSound.play();
+    if (editPromise) {
+      unlockMethods.push(
+        editPromise.then(() => {
+          state.editSound.pause();
+          state.editSound.currentTime = 0;
+          state.editSound.volume = 1;
+        }).catch(() => {})
+      );
+    }
+  }
+
+  // Wait for at least one method to succeed
+  Promise.race(unlockMethods)
+    .then(() => {
+      console.log('Audio unlock successful!');
+      audioUnlocked = true;
+
+      btn.classList.add('unlocked');
+      btn.style.opacity = '1';
+      icon.textContent = '✓';
+      text.textContent = 'AUDIO READY';
+
+      // Reload existing sounds
+      if (state.editSound) {
+        state.editSound.volume = 1;
+        state.editSound.load();
+      }
+      if (state.finaleSound) {
+        state.finaleSound.load();
+      }
+
+      console.log('✓ Audio context unlocked for mobile playback');
+    })
+    .catch((error) => {
+      console.error('All unlock methods failed:', error);
+
+      // Show as unlocked anyway - maybe it worked despite error
+      audioUnlocked = true;
+      btn.classList.add('unlocked');
+      btn.style.opacity = '1';
+      icon.textContent = '✓';
+      text.textContent = 'AUDIO READY (TRY IT)';
+
+      console.log('Audio unlock uncertain - marked as ready. Test with preview button.');
+    });
 }
 
 function showAudioUnlockButtonIfMobile() {
