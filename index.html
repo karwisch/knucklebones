@@ -50,7 +50,7 @@
     --bg-inset: #050505;
     --border-dim: #222222;
     --border-mid: #333333;
-    --text-dim: #444444;
+    --text-dim: #666666;
     --text-mid: #888888;
     --text-bright: #cccccc;
     --led-off: #0d1a0d;
@@ -137,13 +137,36 @@
     text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
     text-align: center;
   }
-  .setup-subtitle {
+  .beta-badge {
+    display: inline-block;
     font-size: 12px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: var(--text-dim);
+    letter-spacing: 2px;
+    padding: 4px 8px;
+    background: rgba(255, 165, 0, 0.15);
+    border: 1px solid rgba(255, 165, 0, 0.5);
+    color: #ffb84d;
+    border-radius: 4px;
+    margin-left: 12px;
+    vertical-align: middle;
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+  }
+  .setup-subtitle {
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: var(--text-mid);
     text-align: center;
-    margin-top: -10px;
+    margin-top: -36px;
+  }
+  .setup-set-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: -8px;
+    min-height: 18px;
   }
 
   .setup-panel {
@@ -291,6 +314,189 @@
     box-shadow: 0 0 8px rgba(0, 255, 65, 0.15);
   }
 
+  /* Custom mode */
+  .custom-set-info {
+    margin-bottom: 16px;
+  }
+  .custom-input-row {
+    margin-bottom: 12px;
+  }
+  .custom-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .custom-text-input {
+    width: 100%;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-mid);
+    color: var(--text-mid);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    padding: 8px 12px;
+    outline: none;
+  }
+  .custom-text-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+  .custom-textarea {
+    width: 100%;
+    min-height: 60px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-mid);
+    color: var(--text-mid);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px;
+    outline: none;
+    resize: vertical;
+  }
+  .custom-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+  .custom-scene-builder {
+    margin-top: 16px;
+  }
+  .custom-builder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .custom-total-time {
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 14px;
+    color: var(--led-green);
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
+  }
+  .custom-add-scene {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .scene-duration-input {
+    background: var(--bg-inset);
+    border: 1px solid var(--border-mid);
+    color: var(--led-green);
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 24px;
+    text-align: center;
+    width: 88px;
+    padding: 6px 4px;
+    outline: none;
+    text-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
+  }
+  .scene-duration-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+  .scene-duration-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+  .add-scene-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--led-green);
+    color: var(--led-green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .add-scene-btn:hover {
+    background: rgba(0, 255, 65, 0.08);
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.15);
+  }
+  .custom-scenes-list {
+    max-height: 200px;
+    overflow-y: auto;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-dim);
+    padding: 8px;
+  }
+  .custom-scenes-list::-webkit-scrollbar { width: 4px; }
+  .custom-scenes-list::-webkit-scrollbar-track { background: var(--bg-inset); }
+  .custom-scenes-list::-webkit-scrollbar-thumb { background: var(--border-mid); }
+  .custom-scenes-list:empty::before {
+    content: 'No scenes added yet';
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    display: block;
+    text-align: center;
+    padding: 20px;
+  }
+  .custom-scene-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border-dim);
+    gap: 12px;
+  }
+  .custom-scene-item:last-child { border-bottom: none; }
+  .drag-handle {
+    font-family: monospace;
+    font-size: 16px;
+    color: var(--text-dim);
+    cursor: grab;
+    user-select: none;
+    margin-right: 8px;
+    line-height: 1;
+  }
+  .custom-scene-item[draggable="true"] {
+    cursor: grab;
+  }
+  .custom-scene-item.dragging {
+    opacity: 0.4;
+    cursor: grabbing;
+  }
+  .custom-scene-item.drag-over {
+    border-top: 2px solid var(--accent);
+    padding-top: 4px;
+  }
+  .custom-scene-num {
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 24px;
+  }
+  .custom-scene-time {
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 14px;
+    color: var(--led-green);
+    flex: 1;
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
+  }
+  .remove-scene-btn {
+    background: transparent;
+    border: 1px solid var(--border-dim);
+    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .remove-scene-btn:hover {
+    border-color: #ff0000;
+    color: #ff0000;
+  }
+
   /* Go button */
   .go-btn {
     max-width: 600px;
@@ -311,10 +517,51 @@
     box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
   }
 
+  /* Audio Unlock Button (Mobile) */
+  .audio-unlock-btn {
+    max-width: 600px;
+    width: 100%;
+    background: transparent;
+    border: 2px solid var(--led-orange);
+    color: var(--led-orange);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    padding: 12px;
+    margin: 8px auto;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .audio-unlock-btn:hover {
+    background: rgba(255, 136, 0, 0.08);
+    box-shadow: 0 0 20px rgba(255, 136, 0, 0.2);
+  }
+  .audio-unlock-btn.unlocked {
+    border-color: var(--led-green);
+    color: var(--led-green);
+    cursor: default;
+  }
+  .audio-unlock-btn.unlocked:hover {
+    background: rgba(0, 255, 65, 0.05);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+  }
+  #audio-unlock-icon {
+    font-size: 20px;
+  }
+
   /* ── PREVIEW PHASE ── */
   #preview-phase {
     padding: 24px 40px;
     gap: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: stretch;
   }
 
   .preview-header {
@@ -439,6 +686,19 @@
     font-size: 14px;
     letter-spacing: 6px;
     color: var(--text-dim);
+  }
+  .live-logo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .live-set-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    min-height: 12px;
   }
   .live-set-time {
     font-family: 'Share Tech Mono', monospace;
@@ -678,6 +938,19 @@
   }
   .auto-fade-btn:hover { background: rgba(255, 136, 0, 0.08); }
 
+  .new-set-btn {
+    background: transparent;
+    border: 1px solid var(--text-bright);
+    color: var(--text-bright);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    padding: 8px 24px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .new-set-btn:hover { background: rgba(255, 255, 255, 0.08); }
+
   /* Hidden file inputs */
   .hidden-input { display: none; }
 
@@ -750,6 +1023,51 @@
   }
   .config-btn:hover { border-color: var(--border-mid); color: var(--text-mid); }
 
+  /* Ko-fi Support Link */
+  .kofi-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 24px auto 16px;
+    padding: 12px 20px;
+    max-width: 600px;
+    background: rgba(255, 94, 77, 0.1);
+    border: 1px solid rgba(255, 94, 77, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-mid);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+  }
+  .kofi-link:hover {
+    background: rgba(255, 94, 77, 0.15);
+    border-color: rgba(255, 94, 77, 0.5);
+    color: var(--text-bright);
+    transform: translateY(-2px);
+  }
+  .kofi-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+  .kofi-text {
+    white-space: nowrap;
+  }
+
+  /* Ko-fi link in live phase - more compact */
+  .kofi-link-live {
+    margin: 8px auto 0;
+    padding: 8px 16px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  .kofi-link-live .kofi-logo {
+    height: 18px;
+  }
+
   /* Welcome modal */
   .modal-overlay {
     position: fixed;
@@ -813,14 +1131,447 @@
   #setup-phase {
     overflow-y: auto;
   }
+
+  /* ═══════════ MOBILE RESPONSIVE ═══════════ */
+  @media (max-width: 768px) {
+    /* Setup phase mobile adjustments */
+    #setup-phase {
+      padding: 12px 16px 60px 16px;  /* Reduced padding to fit more content */
+      gap: 10px;  /* Reduced from 16px to save vertical space */
+      overflow-y: auto;  /* Ensure scrolling works on mobile */
+      -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+    }
+
+    .setup-title {
+      font-size: 28px;
+      letter-spacing: 8px;
+    }
+
+    .setup-subtitle {
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .beta-badge {
+      font-size: 10px;
+      padding: 3px 6px;
+      margin-left: 8px;
+    }
+
+    .setup-panel {
+      padding: 12px 16px;
+    }
+
+    .setup-row {
+      padding: 8px 0;
+    }
+
+    .setup-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .num-input {
+      width: 50px;
+      padding: 6px;
+      font-size: 16px;
+    }
+
+    .unit-label {
+      font-size: 10px;
+    }
+
+    .mode-section-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+    }
+
+    .mode-tab {
+      padding: 8px 12px;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .mult-btn {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .preset-row {
+      padding: 8px;
+      font-size: 11px;
+    }
+
+    .go-btn {
+      padding: 14px;
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin: 16px auto;
+    }
+
+    .audio-unlock-btn {
+      padding: 14px;
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin: 16px auto;
+    }
+
+    .config-btn {
+      font-size: 9px;
+      padding: 8px;
+      letter-spacing: 1px;
+    }
+
+    .sound-section {
+      margin: 12px 0;
+    }
+
+    .sound-row {
+      padding: 6px 0;
+    }
+
+    .sound-label {
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    .sound-upload-btn,
+    .sound-preview-btn {
+      font-size: 9px;
+      padding: 4px 8px;
+    }
+
+    /* Preview phase mobile adjustments */
+    #preview-phase {
+      padding: 12px;
+      gap: 12px;
+    }
+
+    .preview-title {
+      font-size: 16px;
+      letter-spacing: 4px;
+    }
+
+    .preview-stats {
+      font-size: 11px;
+    }
+
+    .rundown-container {
+      padding: 12px;
+      /* Reserve space for header (~50px) + buttons (~100px) + gaps/padding (~50px) = 200px */
+      flex: 1 1 auto;
+      min-height: 0;  /* Allow flex item to shrink below content size */
+      max-height: calc(100vh - 200px);
+      max-height: calc(100dvh - 200px);  /* iOS Safari support with fallback */
+      overflow-y: auto;  /* Ensure scrolling works */
+      -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+    }
+
+    .rundown-scene {
+      font-size: 12px;
+      padding: 8px;
+    }
+
+    .preview-actions {
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;  /* Prevent buttons from being pushed off-screen */
+    }
+
+    .preview-btn {
+      padding: 12px;
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+
+    .kofi-link {
+      padding: 10px 16px;
+      gap: 10px;
+      font-size: 11px;
+      margin: 20px auto 12px;
+    }
+    .kofi-logo {
+      height: 20px;
+    }
+
+    /* Live phase mobile adjustments */
+    #live-phase {
+      padding: 12px 16px;
+      gap: 8px;
+    }
+
+    .live-logo {
+      font-size: 18px;
+      letter-spacing: 4px;
+    }
+
+    .live-set-time {
+      font-size: 11px;
+    }
+
+    .scene-label {
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+    .next-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .live-rundown-mini {
+      max-height: 60px;
+      overflow-y: auto;
+      padding: 2px 0;
+    }
+
+    .ctrl-btn {
+      padding: 10px;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .kofi-link-live {
+      margin: 6px auto 0;
+      padding: 6px 12px;
+      font-size: 10px;
+      gap: 6px;
+    }
+    .kofi-link-live .kofi-logo {
+      height: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Extra small mobile adjustments */
+    #setup-phase {
+      padding: 10px 12px 70px 12px;  /* Minimal padding to maximize content space */
+      gap: 8px;  /* Tight spacing to fit everything on screen */
+      overflow-y: auto;  /* Ensure scrolling works on mobile */
+      -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+    }
+
+    .setup-title {
+      font-size: 24px;
+      letter-spacing: 6px;
+    }
+
+    .setup-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .beta-badge {
+      font-size: 8px;
+      padding: 2px 5px;
+      margin-left: 6px;
+      letter-spacing: 1px;
+    }
+
+    .setup-panel {
+      padding: 10px 12px;
+    }
+
+    .setup-row {
+      padding: 6px 0;
+    }
+
+    .setup-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .num-input {
+      width: 45px;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .unit-label {
+      font-size: 9px;
+    }
+
+    .mode-section-title {
+      font-size: 9px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .mode-tab {
+      padding: 6px 10px;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+    }
+
+    .mult-btn {
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    .preset-row {
+      padding: 6px;
+      font-size: 10px;
+    }
+
+    .go-btn {
+      padding: 12px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin: 12px auto;
+    }
+
+    .audio-unlock-btn {
+      padding: 12px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin: 12px auto;
+    }
+
+    .config-btn {
+      font-size: 8px;
+      padding: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .sound-section {
+      margin: 10px 0;
+    }
+
+    .sound-row {
+      padding: 5px 0;
+      gap: 4px;
+    }
+
+    .sound-label {
+      font-size: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .sound-name {
+      font-size: 9px;
+    }
+
+    .sound-upload-btn,
+    .sound-preview-btn {
+      font-size: 8px;
+      padding: 3px 6px;
+    }
+
+    #preview-phase {
+      padding: 8px;
+      gap: 8px;
+    }
+
+    .preview-title {
+      font-size: 14px;
+      letter-spacing: 3px;
+    }
+
+    .preview-stats {
+      font-size: 10px;
+    }
+
+    .rundown-container {
+      /* Smaller reserved space due to reduced padding: ~180px total */
+      flex: 1 1 auto;
+      min-height: 0;  /* Allow flex item to shrink below content size */
+      max-height: calc(100vh - 180px);
+      max-height: calc(100dvh - 180px);  /* iOS Safari support with fallback */
+      overflow-y: auto;  /* Ensure scrolling works */
+      -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+    }
+
+    .preview-actions {
+      flex-shrink: 0;  /* Also protect buttons at smaller viewport */
+    }
+
+    .kofi-link {
+      flex-direction: column;
+      padding: 12px;
+      gap: 8px;
+      font-size: 10px;
+      margin: 16px auto 8px;
+    }
+    .kofi-logo {
+      height: 18px;
+    }
+    .kofi-text {
+      text-align: center;
+      white-space: normal;
+    }
+
+    /* Live phase compact mobile adjustments */
+    #live-phase {
+      padding: 8px 12px;
+      gap: 6px;
+    }
+
+    .live-logo {
+      font-size: 16px;
+      letter-spacing: 3px;
+    }
+
+    .live-set-time {
+      font-size: 10px;
+    }
+
+    .scene-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .next-label {
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .live-rundown-mini {
+      max-height: 50px;
+      overflow-y: auto;
+      gap: 2px;
+    }
+
+    .mini-scene {
+      font-size: 10px;
+      padding: 2px 4px;
+    }
+
+    .ctrl-btn {
+      padding: 8px 6px;
+      font-size: 9px;
+      letter-spacing: 0.5px;
+    }
+
+    .kofi-link-live {
+      flex-direction: column;
+      margin: 4px auto 0;
+      padding: 6px;
+      font-size: 9px;
+      gap: 4px;
+    }
+    .kofi-link-live .kofi-logo {
+      height: 14px;
+    }
+    .kofi-link-live .kofi-text {
+      white-space: normal;
+      text-align: center;
+      font-size: 8px;
+    }
+
+    .progress-container {
+      padding: 0 10px;
+    }
+  }
 </style>
 </head>
 <body>
 
 <!-- ═══════════ SETUP PHASE ═══════════ -->
 <div id="setup-phase" class="phase active">
-  <div class="setup-title">KNUCKLEBONES</div>
-  <div class="setup-subtitle">IMPROV TIMER SYSTEM</div>
+  <div class="setup-title">KNUCKLEBONES <span class="beta-badge">BETA</span></div>
+  <div class="setup-set-name" id="setup-set-name"></div>
+  <div class="setup-subtitle">An App for Improv Shows, Jams, and Rehearsals</div>
 
   <div class="setup-panel">
     <div class="setup-row">
@@ -853,10 +1604,11 @@
     <div class="mode-tabs">
       <div class="mode-tab active" data-mode="random" onclick="switchMode('random')">RANDOMIZE</div>
       <div class="mode-tab" data-mode="preset" onclick="switchMode('preset')">PRESET</div>
+      <div class="mode-tab" data-mode="custom" onclick="switchMode('custom')">CUSTOM</div>
     </div>
 
     <div id="random-mode" class="mode-content active">
-      <div class="mode-section-title" style="margin-bottom:8px;">SCENE MULTIPLIER</div>
+      <div class="mode-section-title" style="margin-bottom:8px;">SCENES PER PLAYER MULTIPLIER</div>
       <div class="multiplier-row">
         <div class="mult-btn active" data-mult="1" onclick="setMultiplier(1)">1×</div>
         <div class="mult-btn" data-mult="1.5" onclick="setMultiplier(1.5)">1.5×</div>
@@ -872,6 +1624,32 @@
         <div class="preset-btn" data-preset="bookend" onclick="setPreset('bookend')">BOOKENDS — LONG/SHORT/LONG</div>
         <div class="preset-btn" data-preset="rapid-fire" onclick="setPreset('rapid-fire')">RAPID FIRE — ALL 0:15 SCENES</div>
         <div class="preset-btn" data-preset="chaos" onclick="setPreset('chaos')">CHAOS — WILD VARIATION</div>
+      </div>
+    </div>
+
+    <div id="custom-mode" class="mode-content">
+      <div class="custom-set-info">
+        <div class="custom-input-row">
+          <label class="custom-label">SET NAME</label>
+          <input type="text" id="set-name" class="custom-text-input" placeholder="Opening Night Set" maxlength="50">
+        </div>
+        <div class="custom-input-row">
+          <label class="custom-label">SET DESCRIPTION</label>
+          <textarea id="set-description" class="custom-textarea" placeholder="Describe what this set is designed for..." maxlength="200"></textarea>
+        </div>
+      </div>
+
+      <div class="custom-scene-builder">
+        <div class="custom-builder-header">
+          <span class="custom-label">BUILD YOUR RUNDOWN</span>
+          <span class="custom-total-time" id="custom-total-time">TOTAL: 0:00</span>
+        </div>
+        <div class="custom-add-scene">
+          <input type="number" id="scene-duration-input" class="scene-duration-input" placeholder="60" min="5" max="600" value="60" onkeypress="if(event.key==='Enter') addCustomScene()">
+          <span class="scene-duration-label">SECONDS</span>
+          <button class="add-scene-btn" onclick="addCustomScene()">+ ADD SCENE</button>
+        </div>
+        <div class="custom-scenes-list" id="custom-scenes-list"></div>
       </div>
     </div>
   </div>
@@ -896,6 +1674,12 @@
     </div>
   </div>
 
+  <!-- Mobile Audio Unlock Button -->
+  <button class="audio-unlock-btn" id="audio-unlock-btn" onclick="unlockAudio()" style="display: none;">
+    <span id="audio-unlock-icon">📱</span>
+    <span id="audio-unlock-text">TAP TO ENABLE AUDIO</span>
+  </button>
+
   <button class="go-btn" onclick="generateRundown()">GENERATE RUNDOWN</button>
 
   <div class="config-actions">
@@ -903,6 +1687,12 @@
     <button class="config-btn" onclick="document.getElementById('config-load-input').click()">LOAD SHOW CONFIG</button>
     <input type="file" id="config-load-input" class="hidden-input" accept=".json" onchange="loadShowConfig(this)">
   </div>
+
+  <!-- Ko-fi Support Link -->
+  <a href="https://ko-fi.com/karwisch" target="_blank" rel="noopener noreferrer" class="kofi-link">
+    <img src="https://untanglednarrative.com/apps/knucklebones/kofilogo.png" alt="Ko-fi" class="kofi-logo">
+    <span class="kofi-text">Enjoy this app? Support a Scholarship!</span>
+  </a>
 </div>
 
 <!-- ═══════════ WELCOME MODAL ═══════════ -->
@@ -938,7 +1728,10 @@
 <!-- ═══════════ LIVE PHASE ═══════════ -->
 <div id="live-phase" class="phase">
   <div class="live-top-bar">
-    <div class="live-logo">KNUCKLEBONES</div>
+    <div class="live-logo-container">
+      <div class="live-logo">KNUCKLEBONES</div>
+      <div class="live-set-name" id="live-set-name"></div>
+    </div>
     <div class="live-set-time" id="live-set-time">SET: 25:00</div>
   </div>
 
@@ -972,7 +1765,14 @@
       <span class="fade-vol-label" id="fade-vol-display">100%</span>
     </div>
     <button class="auto-fade-btn" onclick="autoFade()">AUTO FADE (5s)</button>
+    <button class="new-set-btn" onclick="resetToSetup()">NEW SET</button>
   </div>
+
+  <!-- Ko-fi Support Link -->
+  <a href="https://ko-fi.com/karwisch" target="_blank" rel="noopener noreferrer" class="kofi-link kofi-link-live">
+    <img src="https://untanglednarrative.com/apps/knucklebones/kofilogo.png" alt="Ko-fi" class="kofi-logo">
+    <span class="kofi-text">Enjoy this app? Support a Scholarship!</span>
+  </a>
 </div>
 
 <script>
@@ -997,6 +1797,9 @@ const state = {
   isStageView: false,
   channel: null,
   allowFiveSec: false,
+  setName: '',
+  setDescription: '',
+  customScenes: [],
 
 };
 
@@ -1060,6 +1863,7 @@ function switchMode(mode) {
   document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
   document.getElementById('random-mode').classList.toggle('active', mode === 'random');
   document.getElementById('preset-mode').classList.toggle('active', mode === 'preset');
+  document.getElementById('custom-mode').classList.toggle('active', mode === 'custom');
 }
 
 function setMultiplier(m) {
@@ -1077,6 +1881,117 @@ function toggleFiveSecond() {
   state.allowFiveSec = cb.checked;
 }
 
+// ═══════════ CUSTOM MODE FUNCTIONS ═══════════
+function addCustomScene() {
+  const input = document.getElementById('scene-duration-input');
+  const duration = parseInt(input.value);
+  if (!duration || duration < 5 || duration > 600) {
+    alert('Scene duration must be between 5 and 600 seconds');
+    return;
+  }
+  state.customScenes.push(duration);
+  renderCustomScenes();
+  updateCustomTotal();
+  input.value = 60; // Reset to default
+}
+
+function removeCustomScene(index) {
+  state.customScenes.splice(index, 1);
+  renderCustomScenes();
+  updateCustomTotal();
+}
+
+function renderCustomScenes() {
+  const container = document.getElementById('custom-scenes-list');
+  if (state.customScenes.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+  container.innerHTML = state.customScenes.map((duration, index) => {
+    const num = String(index + 1).padStart(2, '0');
+    const m = Math.floor(duration / 60);
+    const s = duration % 60;
+    const timeStr = `${m}:${String(s).padStart(2, '0')}`;
+    return `
+      <div class="custom-scene-item" draggable="true" data-index="${index}"
+           ondragstart="handleDragStart(event)" 
+           ondragover="handleDragOver(event)" 
+           ondrop="handleDrop(event)"
+           ondragend="handleDragEnd(event)">
+        <span class="drag-handle">⋮⋮</span>
+        <span class="custom-scene-num">${num}</span>
+        <span class="custom-scene-time">${timeStr}</span>
+        <button class="remove-scene-btn" onclick="removeCustomScene(${index})">REMOVE</button>
+      </div>
+    `;
+  }).join('');
+}
+
+// ═══════════ DRAG AND DROP HANDLERS ═══════════
+let draggedIndex = null;
+
+function handleDragStart(event) {
+  draggedIndex = parseInt(event.currentTarget.dataset.index);
+  event.currentTarget.classList.add('dragging');
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/html', event.currentTarget.innerHTML);
+}
+
+function handleDragOver(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+  const target = event.currentTarget;
+  if (target.classList.contains('custom-scene-item')) {
+    target.classList.add('drag-over');
+  }
+  return false;
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const target = event.currentTarget;
+  target.classList.remove('drag-over');
+  
+  const dropIndex = parseInt(target.dataset.index);
+  
+  if (draggedIndex !== null && draggedIndex !== dropIndex) {
+    // Reorder the array
+    const draggedScene = state.customScenes[draggedIndex];
+    state.customScenes.splice(draggedIndex, 1);
+    state.customScenes.splice(dropIndex, 0, draggedScene);
+    
+    // Re-render the list
+    renderCustomScenes();
+  }
+  
+  return false;
+}
+
+function handleDragEnd(event) {
+  event.currentTarget.classList.remove('dragging');
+  // Remove drag-over class from all items
+  document.querySelectorAll('.custom-scene-item').forEach(item => {
+    item.classList.remove('drag-over');
+  });
+  draggedIndex = null;
+}
+function updateCustomTotal() {
+  const total = state.customScenes.reduce((sum, d) => sum + d, 0);
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  const timeStr = `${m}:${String(s).padStart(2, '0')}`;
+  document.getElementById('custom-total-time').textContent = `TOTAL: ${timeStr}`;
+}
+
+function updateSetNameDisplay() {
+  const setName = state.setName || '';
+  document.getElementById('setup-set-name').textContent = setName;
+  document.getElementById('live-set-name').textContent = setName;
+}
+
+
 // ═══════════ SOUND HANDLING ═══════════
 function handleSoundUpload(input, type) {
   const file = input.files[0];
@@ -1087,11 +2002,21 @@ function handleSoundUpload(input, type) {
     if (type === 'edit') {
       state.editSound = audio;
       state.editSoundDuration = audio.duration;
-      document.getElementById('edit-sound-name').textContent = file.name;
+      const nameEl = document.getElementById('edit-sound-name');
+      nameEl.textContent = file.name;
+      // Reset styling from default sound
+      nameEl.style.fontStyle = 'normal';
+      nameEl.style.opacity = '1';
     } else {
       state.finaleSound = audio;
-      document.getElementById('finale-sound-name').textContent = file.name;
+      const nameEl = document.getElementById('finale-sound-name');
+      nameEl.textContent = file.name;
+      // Reset styling from default sound
+      nameEl.style.fontStyle = 'normal';
+      nameEl.style.opacity = '1';
     }
+    // Save file name to localStorage so it persists across sessions
+    saveToLocalStorage();
   });
 }
 
@@ -1104,6 +2029,51 @@ function previewSound(type) {
   }
 }
 
+function loadDefaultEditSound() {
+  // Default edit sound from local file - place "default-edit-sound.mp3" in same folder as index.html
+  const defaultUrl = './default-edit-sound.mp3';
+  const audio = new Audio(defaultUrl);
+
+  audio.addEventListener('loadedmetadata', () => {
+    state.editSound = audio;
+    state.editSoundDuration = audio.duration;
+    document.getElementById('edit-sound-name').textContent = 'Default edit sound';
+    document.getElementById('edit-sound-name').style.fontStyle = 'italic';
+    document.getElementById('edit-sound-name').style.opacity = '0.7';
+    console.log('✓ Default edit sound loaded successfully');
+  });
+
+  audio.addEventListener('error', (e) => {
+    console.warn('Could not load default edit sound from ./default-edit-sound.mp3:', e);
+    console.log('Place "default-edit-sound.mp3" in the same folder as index.html, or upload your own file.');
+    document.getElementById('edit-sound-name').textContent = 'Upload audio file';
+    document.getElementById('edit-sound-name').style.fontStyle = 'normal';
+    document.getElementById('edit-sound-name').style.opacity = '0.6';
+  });
+}
+
+function loadDefaultFinaleSound() {
+  // Default finale song from local file - place "default-finale-song.mp3" in same folder as index.html
+  const defaultUrl = './default-finale-song.mp3';
+  const audio = new Audio(defaultUrl);
+
+  audio.addEventListener('loadedmetadata', () => {
+    state.finaleSound = audio;
+    document.getElementById('finale-sound-name').textContent = 'Default finale song';
+    document.getElementById('finale-sound-name').style.fontStyle = 'italic';
+    document.getElementById('finale-sound-name').style.opacity = '0.7';
+    console.log('✓ Default finale song loaded successfully');
+  });
+
+  audio.addEventListener('error', (e) => {
+    console.warn('Could not load default finale sound from ./default-finale-song.mp3:', e);
+    console.log('Place "default-finale-song.mp3" in the same folder as index.html, or upload your own file.');
+    document.getElementById('finale-sound-name').textContent = 'Upload audio file';
+    document.getElementById('finale-sound-name').style.fontStyle = 'normal';
+    document.getElementById('finale-sound-name').style.opacity = '0.6';
+  });
+}
+
 // ═══════════ RUNDOWN GENERATION ═══════════
 function generateRundown() {
   state.players = parseInt(document.getElementById('player-count').value) || 12;
@@ -1111,11 +2081,23 @@ function generateRundown() {
   state.totalSetTime = state.setMinutes * 60;
   state.allowFiveSec = document.getElementById('five-sec-toggle').checked;
 
+  // Capture set name and description from inputs
+  state.setName = document.getElementById('set-name')?.value || '';
+  state.setDescription = document.getElementById('set-description')?.value || '';
+  updateSetNameDisplay();
+
   const editCueDur = Math.ceil(state.editSoundDuration || 3); // default 3s if no sound loaded
 
-  if (state.mode === 'random') {
+  if (state.mode === 'custom') {
+    if (state.customScenes.length === 0) {
+      alert('Please add at least one scene to your custom rundown');
+      return;
+    }
+    state.scenes = [...state.customScenes];
+    state.totalSetTime = state.scenes.reduce((sum, d) => sum + d, 0) + (state.scenes.length * editCueDur);
+  } else if (state.mode === 'random') {
     generateRandomRundown(editCueDur);
-  } else {
+  } else if (state.mode === 'preset') {
     generatePresetRundown(editCueDur);
   }
 
@@ -1342,10 +2324,18 @@ function tick() {
 
   if (state.sceneTimeRemaining <= 0) {
     clearInterval(state.intervalId);
-    playEditCue(() => {
-      state.totalElapsed += Math.ceil(state.editSoundDuration || 3);
-      startScene(state.currentScene + 1);
-    });
+
+    // Check if this was the last scene
+    if (state.currentScene >= state.scenes.length - 1) {
+      // Last scene complete - go straight to finale (no edit cue)
+      finishSet();
+    } else {
+      // Not the last scene - play edit cue before next scene
+      playEditCue(() => {
+        state.totalElapsed += Math.ceil(state.editSoundDuration || 3);
+        startScene(state.currentScene + 1);
+      });
+    }
   }
 }
 
@@ -1516,6 +2506,31 @@ function autoFade() {
   }, interval);
 }
 
+function resetToSetup() {
+  // Stop any playing audio
+  if (state.editSound) { state.editSound.pause(); state.editSound.currentTime = 0; }
+  if (state.finaleSound) { state.finaleSound.pause(); state.finaleSound.currentTime = 0; }
+
+  // Clear any running intervals
+  if (state.intervalId) clearInterval(state.intervalId);
+
+  // Reset state
+  state.isRunning = false;
+  state.isPaused = false;
+  state.currentScene = 0;
+  state.totalElapsed = 0;
+  state.sceneTimeRemaining = 0;
+
+  // Reset finale controls
+  document.getElementById('finale-controls').classList.remove('active');
+  document.getElementById('fade-slider').value = 100;
+  document.getElementById('fade-vol-display').textContent = '100%';
+  if (state.finaleSound) state.finaleSound.volume = 1;
+
+  // Return to setup phase
+  showPhase('setup');
+}
+
 // ═══════════ BROADCAST CHANNEL (STAGE VIEW) ═══════════
 function initBroadcast() {
   if ('BroadcastChannel' in window) {
@@ -1601,6 +2616,9 @@ function getSetupState() {
     allowFiveSec: document.getElementById('five-sec-toggle').checked,
     editSoundName: document.getElementById('edit-sound-name').textContent,
     finaleSoundName: document.getElementById('finale-sound-name').textContent,
+    setName: state.setName,
+    setDescription: state.setDescription,
+    customScenes: state.customScenes,
     timestamp: new Date().toISOString(),
   };
 }
@@ -1635,8 +2653,26 @@ function applySetup(cfg) {
   if (cfg.finaleSoundName && cfg.finaleSoundName !== 'No file loaded') {
     document.getElementById('finale-sound-name').textContent = cfg.finaleSoundName + ' (re-upload needed)';
   }
+  // Restore custom set data
+  if (cfg.setName) {
+    state.setName = cfg.setName;
+    if (document.getElementById('set-name')) {
+      document.getElementById('set-name').value = cfg.setName;
+    }
+  }
+  if (cfg.setDescription) {
+    state.setDescription = cfg.setDescription;
+    if (document.getElementById('set-description')) {
+      document.getElementById('set-description').value = cfg.setDescription;
+    }
+  }
+  if (cfg.customScenes && Array.isArray(cfg.customScenes)) {
+    state.customScenes = cfg.customScenes;
+    renderCustomScenes();
+    updateCustomTotal();
+  }
+  updateSetNameDisplay();
 }
-
 function loadPreviousSetup() {
   const cfg = loadFromLocalStorage();
   if (cfg) applySetup(cfg);
@@ -1712,13 +2748,36 @@ commitAndGo = function() {
     document.getElementById('commit-btn').textContent = '♪ PREVIEWING CUE...';
     document.getElementById('commit-btn').style.pointerEvents = 'none';
     state.editSound.currentTime = 0;
-    state.editSound.play();
-    state.editSound.onended = () => {
-      document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
-      document.getElementById('commit-btn').style.pointerEvents = '';
-      // Short pause after cue preview, then start
-      setTimeout(() => startLiveSet(), 1500);
-    };
+
+    // Handle play() promise to catch mobile autoplay blocks
+    const playPromise = state.editSound.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Audio playing successfully - wait for it to end
+          state.editSound.onended = () => {
+            document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
+            document.getElementById('commit-btn').style.pointerEvents = '';
+            // Short pause after cue preview, then start
+            setTimeout(() => startLiveSet(), 1500);
+          };
+        })
+        .catch((error) => {
+          // Audio blocked (mobile autoplay restriction) - start anyway
+          console.log('Audio autoplay blocked, starting without cue preview:', error);
+          document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
+          document.getElementById('commit-btn').style.pointerEvents = '';
+          startLiveSet();
+        });
+    } else {
+      // Fallback for browsers that don't return a promise
+      state.editSound.onended = () => {
+        document.getElementById('commit-btn').textContent = '▶ PREVIEW CUE & GO';
+        document.getElementById('commit-btn').style.pointerEvents = '';
+        setTimeout(() => startLiveSet(), 1500);
+      };
+    }
   } else {
     startLiveSet();
   }
@@ -1772,9 +2831,137 @@ autoFade = function() {
   }, interval);
 };
 
+// ═══════════ MOBILE AUDIO UNLOCK ═══════════
+let audioUnlocked = false;
+
+function isMobileDevice() {
+  // Check for touch support and screen size
+  return ('ontouchstart' in window || navigator.maxTouchPoints > 0) &&
+         window.innerWidth <= 768;
+}
+
+function unlockAudio() {
+  console.log('unlockAudio() called');
+
+  if (audioUnlocked) {
+    console.log('Audio already unlocked');
+    return;
+  }
+
+  // Get button elements
+  const btn = document.getElementById('audio-unlock-btn');
+  const icon = document.getElementById('audio-unlock-icon');
+  const text = document.getElementById('audio-unlock-text');
+
+  // Immediate visual feedback
+  console.log('Setting button to unlocking state...');
+  icon.textContent = '⏳';
+  text.textContent = 'UNLOCKING...';
+  btn.style.opacity = '0.7';
+
+  // Try multiple methods to unlock audio
+  const unlockMethods = [];
+
+  // Method 1: Silent audio element
+  const silentAudio = new Audio();
+  silentAudio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+  unlockMethods.push(silentAudio.play());
+
+  // Method 2: AudioContext (if available)
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+      const audioContext = new AudioContext();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      gainNode.gain.value = 0; // Silent
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      oscillator.start(0);
+      oscillator.stop(0.001);
+      console.log('AudioContext unlock attempted');
+    }
+  } catch (e) {
+    console.log('AudioContext method failed:', e);
+  }
+
+  // Method 3: Use existing audio if available
+  if (state.editSound) {
+    console.log('Trying to play edit sound briefly...');
+    state.editSound.volume = 0;
+    const editPromise = state.editSound.play();
+    if (editPromise) {
+      unlockMethods.push(
+        editPromise.then(() => {
+          state.editSound.pause();
+          state.editSound.currentTime = 0;
+          state.editSound.volume = 1;
+        }).catch(() => {})
+      );
+    }
+  }
+
+  // Wait for at least one method to succeed
+  Promise.race(unlockMethods)
+    .then(() => {
+      console.log('Audio unlock successful!');
+      audioUnlocked = true;
+
+      btn.classList.add('unlocked');
+      btn.style.opacity = '1';
+      icon.textContent = '✓';
+      text.textContent = 'AUDIO READY';
+
+      // Reload existing sounds
+      if (state.editSound) {
+        state.editSound.volume = 1;
+        state.editSound.load();
+      }
+      if (state.finaleSound) {
+        state.finaleSound.load();
+      }
+
+      console.log('✓ Audio context unlocked for mobile playback');
+    })
+    .catch((error) => {
+      console.error('All unlock methods failed:', error);
+
+      // Show as unlocked anyway - maybe it worked despite error
+      audioUnlocked = true;
+      btn.classList.add('unlocked');
+      btn.style.opacity = '1';
+      icon.textContent = '✓';
+      text.textContent = 'AUDIO READY (TRY IT)';
+
+      console.log('Audio unlock uncertain - marked as ready. Test with preview button.');
+    });
+}
+
+function showAudioUnlockButtonIfMobile() {
+  if (isMobileDevice() && !state.isStageView) {
+    document.getElementById('audio-unlock-btn').style.display = 'flex';
+  }
+}
+
 // ═══════════ INIT ═══════════
+// Prevent browser from restoring scroll position and force scroll to top
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+// Also ensure setup phase starts at top
+setTimeout(() => {
+  const setupPhase = document.getElementById('setup-phase');
+  if (setupPhase) {
+    setupPhase.scrollTop = 0;
+  }
+}, 0);
+
 checkStageView();
 initBroadcast();
+loadDefaultEditSound();
+loadDefaultFinaleSound();
+showAudioUnlockButtonIfMobile();
 
 // Check for previous setup on load
 if (!state.isStageView) {
